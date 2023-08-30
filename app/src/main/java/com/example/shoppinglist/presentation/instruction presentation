@@ -1,0 +1,7 @@
+Presentatinon-слой отвечает за отображение данных и взаимодействие с пользователем.
+Методв бизнес-логики вызываются из UseCase(Interactors).
+C UseCase взаимодействует ViewModel.
+C Domain-слоем взаимодействует ViewModel.
+В чистой архитектуре Presentation-слой знает о domain, но ничего не знает о data-слое.
+
+Если во ViewModel нужен контексе, то наследуемся от AndroidViewModel, если не нуженб то от ViewModel.
