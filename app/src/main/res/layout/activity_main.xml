@@ -23,15 +23,17 @@
         android:id="@+id/button_add_shop_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
         android:layout_marginBottom="25dp"
         android:clickable="true"
-        android:contentDescription="Add new shop item"
+        android:contentDescription="@string/add_new_shop_item"
         android:focusable="true"
+        android:src="@drawable/ic_add"
+        android:tint="@color/design_default_color_secondary"
+        app:backgroundTint="#FDF6FE"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_constrainBottom_toBottomOf="parent"
-        tools:layout_constrainEnd_toEndOf="parent"
-        tools:srcCompat="@drawable/ic_add" />
+        app:layout_constraintRight_toRightOf="parent" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,7 +20,6 @@ class ShopListAdapter: RecyclerView.Adapter<ShopListAdapter.ShopItemViewHolder>(
             val diffResult = DiffUtil.calculateDiff(callback)
             diffResult.dispatchUpdatesTo(this)
             field = value
-            //notifyDataSetChanged()
         }
 
     var onShopItemLongClickListener: ((ShopItem) -> Unit)? = null
@@ -54,14 +53,20 @@ class ShopListAdapter: RecyclerView.Adapter<ShopListAdapter.ShopItemViewHolder>(
         super.onViewRecycled(viewHolder)
         viewHolder.tvName.text = ""
         viewHolder.tvCount.text = ""
-        viewHolder.tvName.setTextColor(ContextCompat.getColor(viewHolder.view.context, android.R.color.white))
+        viewHolder.tvName.setTextColor(
+            ContextCompat.getColor(
+                viewHolder.view.context,
+                android.R.color.white
+            )
+        )
     }
 
     override fun onBindViewHolder(viewHolder: ShopItemViewHolder, position: Int) {
         Log.d("ShopListAdapter","onBindViewHolder, count: ${++count}")
         val shopItem = shopList[position]
-        viewHolder.view.setOnClickListener {
+        viewHolder.view.setOnLongClickListener {
             onShopItemLongClickListener?.invoke(shopItem)
+            true
         }
         viewHolder.view.setOnClickListener {
             onShopItemClickListener?.invoke(shopItem)
@@ -70,7 +75,7 @@ class ShopListAdapter: RecyclerView.Adapter<ShopListAdapter.ShopItemViewHolder>(
         viewHolder.tvCount.text = shopItem.count.toString()
     }
 
-    class ShopItemViewHolder(val view: View): RecyclerView.ViewHolder(view) {
+    class ShopItemViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val tvName = view.findViewById<TextView>(R.id.tv_name)
         val tvCount = view.findViewById<TextView>(R.id.tv_count)
     }
